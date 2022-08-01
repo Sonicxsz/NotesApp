@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import NoteItem from './noteItem'
 import './noteItem.scss'
 
-import {useAppDispatch, useAppSelector} from '../../hooks';
+import { useAppSelector} from '../../hooks';
 
 
 export interface Istate {

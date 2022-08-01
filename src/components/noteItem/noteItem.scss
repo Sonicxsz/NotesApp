@@ -13,7 +13,7 @@
         width: 250px;
         height: 330px;
         background-color: #d68043;
-        padding: 15px;
+        padding: 8px 15px 5px 15px;
         color: rgb(222, 251, 251);
         margin-right: 20px;
         box-shadow: 7px 10px 12px rgba(42, 42, 42, 0.752);
@@ -36,7 +36,28 @@
             font-size: 20px;
         }
         .imp{
-            background-color: red;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            width: 30px;
+            height: 25px;
+            
+           
+        }
+        .imp:hover {
+            border-radius:10%;
+            background-color: #1d87c0;
+            -webkit-transition: background-color 300ms linear;
+            -ms-transition: background-color 300ms linear;
+            transition: background-color 300ms linear;
+        }
+        .imp:active {
+            border-radius:10%;
+            background-color: #eec9be;
+            -webkit-transition: background-color 300ms linear;
+            -ms-transition: background-color 300ms linear;
+            transition: background-color 300ms linear;
         }
         .text{
             height: 190px;
@@ -65,5 +86,9 @@
         }
     }
     
-
+    .flex{
+        display: flex;
+        justify-content: space-between;
+        align-items:center
+    }
 }

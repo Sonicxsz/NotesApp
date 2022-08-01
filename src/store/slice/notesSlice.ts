@@ -21,7 +21,7 @@ type NotesState = {
 const initialState: NotesState = {
     notes: [],
     loading: false,
-    important: true
+    important: false
    
 }
 

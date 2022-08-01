@@ -3,8 +3,8 @@ import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import ClearIcon from '@mui/icons-material/Clear';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import './noteItem.scss'
-import {  changeFavorite, deleteNotes, fetchNotes } from '../../store/slice/notesSlice'
-import { Button } from '@mui/material';
+import {  changeFavorite, deleteNotes } from '../../store/slice/notesSlice'
+
 export type INoteItem = {
     name: string,
     title: string,
@@ -37,6 +37,7 @@ const NoteItem  = (props: INoteItem) => {
         dispatch(changeFavorite({b, id}))   
       }}
       ></BookmarkOutlinedIcon>
+      <div className='imp'>
       <ClearIcon
       fontSize='medium'
       onClick={() =>{
@@ -44,6 +45,7 @@ const NoteItem  = (props: INoteItem) => {
         
       }} >
       </ClearIcon>
+      </div>
       </div>
       <span className='name'>{name}</span>
       

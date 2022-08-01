@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../../hooks'
 import './noteItem.scss'
-import { deleteNotes } from '../../store/slice/notesSlice'
+import {  changeFavorite, deleteNotes, fetchNotes } from '../../store/slice/notesSlice'
 export type INoteItem = {
     name: string,
     title: string,
@@ -8,12 +8,11 @@ export type INoteItem = {
     important: boolean,
     id: string,
     color: string,
-    importantHandler: (id:string) => void,
     
 }
 
 const NoteItem  = (props: INoteItem) => {
-  const {name, title, time, id, important, importantHandler} = props
+  const {name, title, time, id, important} = props
   const text = title.length > 260 ? title.slice(0, 248) + '...' : title
   const clazz = +important ? "circle imp" : "circle"
 
@@ -25,8 +24,14 @@ const NoteItem  = (props: INoteItem) => {
     <div className='note' style={{backgroundColor: props.color}}>
       <div className='note__first'>
       <span
-      onClick={() => {
-        importantHandler(id)
+      onClick={async() => {
+        let a = {"important": !important}
+        let b = await JSON.stringify(a)
+        
+        dispatch(changeFavorite({b, id}))
+        
+        
+        
       }}
       className={clazz}></span>
       <i className="bi bi-x-circle"

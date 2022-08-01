@@ -14,12 +14,14 @@ type Istate = {
 
 type NotesState = {
     notes: Istate[];
-    loading: boolean
+    loading: boolean;
+    important: boolean;
 }
    
 const initialState: NotesState = {
     notes: [],
     loading: false,
+    important: true
    
 }
 
@@ -53,11 +55,24 @@ export const addNotes = createAsyncThunk<any, any>(
 
 )
 
-export const deleteNotes = createAsyncThunk<any, any>(
+export const deleteNotes = createAsyncThunk<any, string>(
     'delete/fetch',
     async (id) =>{
         fetch(`https://62dc84e04438813a2616d538.mockapi.io/notes/${id}`, {
             method: 'DELETE',
+            
+        })
+    }
+)
+
+export const changeFavorite = createAsyncThunk<any, any>(
+    'change/fetch',
+    async (obj) =>{
+        
+        fetch(`https://62dc84e04438813a2616d538.mockapi.io/notes/${obj.id}`, {
+            method: 'PUT',
+            headers: {'Content-type':'application/json'},
+            body: obj.b
         })
     }
 
@@ -75,6 +90,9 @@ const NoteSlice = createSlice({
                 return i.id !== action.payload
             })
             state.notes = notes
+        },
+        changeImportant: (state, action) =>{
+            state.important = action.payload
         }
     },
 
@@ -102,11 +120,17 @@ const NoteSlice = createSlice({
         builder.addCase(deleteNotes.fulfilled, (state) =>{
             state.loading = !state.loading
         })
-
+        builder.addCase(changeFavorite.pending, (state) =>{
+            state.loading = !state.loading
+        })
+        builder.addCase(changeFavorite.fulfilled, (state) =>{
+            state.loading = !state.loading
+            
+        })
     }
 
 })
 
-export const {addNote, deleteNote} = NoteSlice.actions
+export const {addNote, deleteNote, changeImportant} = NoteSlice.actions
 export default NoteSlice.reducer
 

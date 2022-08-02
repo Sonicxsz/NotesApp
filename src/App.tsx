@@ -16,6 +16,7 @@ import './App.css';
 
 
 function App() {
+  
   const [isNoteOpen, setNoteOpen] = useState<boolean>(false)
   const dispatch = useAppDispatch()
   const loading = useAppSelector(state => state.notesSlice.loading)
@@ -33,7 +34,7 @@ function App() {
       <Menu openNote={setNoteOpen}/>
       {isNoteOpen ? <Modal closeNote={setNoteOpen}/> : null}
       <BrowserRouter>
-      <Routes>
+      <Routes >
     
       <Route path='/' element={<NoteItemList />}/>
       </Routes>

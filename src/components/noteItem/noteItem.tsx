@@ -1,9 +1,11 @@
 import { useAppDispatch } from '../../hooks'
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import ClearIcon from '@mui/icons-material/Clear';
+import {motion, AnimatePresence} from 'framer-motion'
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import './noteItem.scss'
 import {  changeFavorite, deleteNotes } from '../../store/slice/notesSlice'
+
 
 export type INoteItem = {
     name: string,
@@ -19,13 +21,16 @@ const NoteItem  = (props: INoteItem) => {
   const {name, title, time, id, important} = props
   const text = title.length > 260 ? title.slice(0, 248) + '...' : title
   const color = +important ? "warning" : 'inherit'
-
+  
   const dispatch = useAppDispatch()
 
 
   return (
-   <>
-    <div className='note' style={{backgroundColor: props.color}}>
+   <AnimatePresence>
+    <motion.div 
+      initial={{height:0, opacity:0}}
+      animate={{height:"330px", opacity:1}}  
+    className='note' style={{backgroundColor: props.color}}>
       <div className='note__first'>
       <BookmarkOutlinedIcon
       color={color}
@@ -58,13 +63,12 @@ const NoteItem  = (props: INoteItem) => {
       
        <div className='imp'>
        <OpenInFullIcon
-        fontSize='small'
-        />
+        fontSize='small'/>
        </div>
       
       </div>
-    </div>
-   </>
+    </motion.div>
+   </AnimatePresence>
   )
 }
 

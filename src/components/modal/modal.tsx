@@ -1,29 +1,38 @@
-import { Box, TextField, Button, Typography, ToggleButton, ToggleButtonGroup } from '@mui/material'
-import { nanoid } from 'nanoid'
+import { ToggleButton, ToggleButtonGroup } from '@mui/material'
 import React, {useState} from 'react'
-import { timeCreater } from '../../utils/time'
 import style from './modal.module.scss'
-import { Istate } from '../noteItem/NoteItemList'
-import {addNotes} from '../../store/slice/notesSlice'
-import {useAppDispatch} from '../../hooks'
 import ModalNote from './modalNote'
+import {motion} from 'framer-motion'
+
+
+
+const animationDiv = {
+    hidden: {
+        y: 180,
+        opacity: 0.4
+    },
+    visible: {
+        y: 0,
+        opacity: 1,
+    }
+}
+
 interface Imodal {
     closeNote: (value:boolean) => void
 
 }
 
-
-
-
-
 const Modal = (props:Imodal) => {
     const [mode, setMode] = useState<string>("1")
     
-    const clazz = mode === "1" ? 'success' : 'standard'
 
   return (
     <div className={style.dark}>
-        <div className={style.wrap}>
+        <motion.div 
+        variants={animationDiv} 
+        initial='hidden'
+        whileInView='visible'
+        className={style.wrap}>
         <ToggleButtonGroup
         color="primary"
         exclusive
@@ -49,7 +58,7 @@ const Modal = (props:Imodal) => {
             {mode === '1' ? <ModalNote closeNote={props.closeNote} /> : null}
            
 
-        </div>
+        </motion.div>
     </div>
   )
 }

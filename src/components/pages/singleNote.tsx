@@ -6,8 +6,12 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { path } from "../../store/slice/notesSlice";
 import { Istate } from "../../store/slice/notesSlice";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import CheckIcon from '@mui/icons-material/Check';
 import styles from "./singleNote.module.scss";
-import { animationDiv } from "../modal/modal";
+
+
+
 
 function SingleNote() {
   const [nameInp, setNameInp] = useState(true);
@@ -93,7 +97,17 @@ function SingleNote() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "700px", opacity: 1 }}
             >
-              настройки
+              <div 
+              onClick={(e) => {
+                e.stopPropagation();
+                setNameInp(!nameInp);
+                setTimeout(() => {
+                  refName.current?.focus();
+                });
+              }}
+              className={styles.impSettings} style={{marginTop:'75px', marginBottom: '200px'}}><BorderColorIcon /></div>
+              <div className={styles.impSettings} style={{marginBottom: '277px'}}><BorderColorIcon /></div>
+              <div className={styles.impSettings}><CheckIcon /></div>
             </motion.div>
           )}
         </div>

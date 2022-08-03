@@ -1,31 +1,31 @@
-.wrap{
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    margin-right: 100px;
-    padding: 20px 10px 0 10px;
-    background-color: blue;
-  
-    .item{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        background-color: red;
-        display: inline-block;
-        margin-bottom: 60px;
-        text-align: center;
-        padding-top: 8px;
-        padding-right: 1px;
-        border-radius: 40%;
-        i{
-            font-size: 30px;
-            color: white;
-            transition: all .5s ease;
-        }:hover{
-            color:rgb(39, 241, 231)
-        }
-    }
-}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-right: 100px;
+  padding: 20px 10px 0 10px;
+  background-color: blue;
 
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    display: inline-block;
+    margin-bottom: 60px;
+    text-align: center;
+    padding-top: 8px;
+    padding-right: 1px;
+    border-radius: 40%;
+    i {
+      font-size: 30px;
+      color: white;
+      transition: all 0.5s ease;
+    }
+    :hover {
+      color: rgb(39, 241, 231);
+    }
+  }
+}

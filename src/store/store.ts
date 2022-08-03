@@ -1,15 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import notesSlice from "./slice/notesSlice";
 
-
-
 const store = configureStore({
-    reducer: {
-        notesSlice,
-    }
-})
-
+  reducer: {
+    notesSlice,
+  },
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export default store
+export default store;

@@ -1,6 +1,6 @@
 .note {
   display: inline-block;
-  width: 500px;
+  width: 450px;
   height: 930px;
   background-color: #d68043;
   padding: 5px 15px 5px 15px;
@@ -27,6 +27,34 @@
   padding-top: 5px;
   padding-right: 1px;
 }
+
+.impSettings {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgb(180, 176, 176);
+  border-radius: 5px;
+}
+
+.impSettings:hover {
+  border-radius: 10%;
+  background-color: #1d87c0;
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+}
+
+.impSettings:active {
+  border-radius: 10%;
+  background-color: #eec9be;
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+}
+
 .imp:hover {
   border-radius: 10%;
   background-color: #1d87c0;
@@ -97,7 +125,7 @@
   margin-bottom: 5px;
 }
 .time {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   padding: 6px;
 }
@@ -128,16 +156,17 @@
   margin: 0 auto;
 }
 .panel {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   width: 50px;
   height: 700px;
   background-color: #d1d1d1;
-  padding: 5px 15px 5px 15px;
+  padding-left: 9px;
   color: rgb(147, 124, 107);
   border-radius: 5px;
   box-shadow: 7px 10px 12px rgba(42, 42, 42, 0.752);
   transform: scale(100%);
-  margin-left: 10px;
+  margin-left: 5px;
   transition: transform 0.3s ease;
 }

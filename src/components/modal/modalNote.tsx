@@ -18,9 +18,11 @@ function ModalNote(props: Imodal) {
   const [title, setTitle] = useState<string>("");
   const [colorBtns, setColorBtns] = useState([
     { id: 0, name: "#2E958C" },
-    { id: 1, name: "#4ca65f" },
-    { id: 2, name: "#c35fcc" },
-    { id: 3, name: "#e57a2d" },
+    { id: 1, name: "#589d62" },
+    { id: 2, name: "#945D87" },
+    { id: 3, name: "#EF7663" },
+    {id:4, name: '#a8296b'},
+    {id:5, name: '#303d55'}
   ]);
   const [color, setColor] = useState<string>("#2E958C");
 
@@ -43,40 +45,39 @@ function ModalNote(props: Imodal) {
 
   return (
     <>
-      <Box>
-        <div className={style.flex}>
-          <TextField
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            className={style.nameInp}
-            id="standard-basic"
-            label="Введите название заметки"
-            variant="standard"
-          />
-        </div>
+      <div className={style.flex}>
+        <TextField
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          className={style.nameInp}
+          id="standard-basic"
+          label="Введите название заметки"
+          variant="standard"
+        />
+      </div>
 
-        <div className={style.flex}>
-          <TextField
-            minRows={2}
-            maxRows={6}
-            value={title}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-            className={style.textInp}
-            id="standard-textarea"
-            label="Пишите...."
-            placeholder="Творите"
-            multiline
-            variant="standard"
-          />
-        </div>
-      </Box>
+      <div className={style.flex}>
+        <TextField
+          minRows={2}
+          maxRows={6}
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+          className={style.textInp}
+          id="standard-textarea"
+          label="Пишите...."
+          placeholder="Творите"
+          multiline
+          variant="standard"
+        />
+      </div>
+
       <div className={style.colors}>
         <Typography mr={1} variant="body1">
-          Выберите цвет:
+          Цвет:
         </Typography>
         {colorBtns.map((i) => {
           let clazz =

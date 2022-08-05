@@ -2,8 +2,7 @@
   position: absolute;
   top: 150px;
   left: 40%;
-
-  background-color: rgb(231, 242, 158);
+  background-color: rgb(237, 237, 237);
   width: 350px;
   min-height: 320px;
   padding: 10px 30px;
@@ -39,6 +38,8 @@
     margin-top: 50px;
     width: 80%;
   }
+
+  
   .flex {
     display: flex;
     justify-content: center;
@@ -46,7 +47,7 @@
   .colors {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
     input {
       margin-right: 10px;
     }
@@ -59,9 +60,7 @@
   .btns {
     display: flex;
     justify-content: space-between;
-    margin: 0 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 25px 20px;
   }
 }
 
@@ -73,6 +72,8 @@
 }
 
 .dark {
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   position: absolute;
   top: 0;
   left: 0;

@@ -14,6 +14,7 @@ export type INoteItem = {
   important: boolean;
   id: string;
   color: string;
+  setSearchOpen: (arg: boolean) => void;
 };
 
 const NoteItem = (props: INoteItem) => {
@@ -36,9 +37,7 @@ const NoteItem = (props: INoteItem) => {
             color={color}
             fontSize="large"
             onClick={async () => {
-              let a = { important: !important };
-              let b = await JSON.stringify(a);
-              console.log("ss");
+              const b = await JSON.stringify({ important: !important });
               dispatch(changeFavorite({ b, id }));
             }}
           ></BookmarkOutlinedIcon>
@@ -60,11 +59,16 @@ const NoteItem = (props: INoteItem) => {
         <div className="flex">
           <div className="time">Дата: {time}</div>
 
-          <div className="imp">
-            <Link style={{ color: "inherit" }} to={`noteid:${id}`}>
+          <Link style={{ color: "inherit" }} to={`noteid:${id}`}>
+            <div
+              className="imp"
+              onClick={() => {
+                props.setSearchOpen(false);
+              }}
+            >
               <OpenInFullIcon fontSize="small" />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </motion.div>
     </AnimatePresence>

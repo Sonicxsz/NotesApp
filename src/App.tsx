@@ -36,11 +36,14 @@ function App() {
 
   return (
     <div className="App">
+      
+      <BrowserRouter>
       <Menu searchOpen={searchOpen} setSearchOpen={setSearchOpen} openNote={setNoteOpen} />
       {isNoteOpen ? <Modal closeNote={setNoteOpen} /> : null}
-       {searchOpen ? <Search searchOpen={searchOpen}/> : null}
-      <BrowserRouter>
+        {searchOpen ? <Search searchOpen={searchOpen}/> : null}
         <Routes>
+        
+       
           <Route path="/" element={<NoteItemList setSearchOpen={setSearchOpen}/>} />
           <Route path="/noteid:id" element={<SingleNote />} />
         </Routes>

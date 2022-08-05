@@ -3,6 +3,7 @@ import style from "./menu.module.scss";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { changeFilter } from "../../store/slice/notesSlice";
 import { changeImportant } from "../../store/slice/notesSlice";
+import {Link} from 'react-router-dom'
 
 interface menuProps {
   searchOpen: boolean;
@@ -27,7 +28,9 @@ function Menu(props: any) {
             dispatch(changeImportant(false));
           }}
         >
+          <Link to='/'>
           <i className="bi bi-journal-bookmark"></i>
+          </Link>
         </div>
         <div className={style.item}>
           <i

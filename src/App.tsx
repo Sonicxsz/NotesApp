@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import NoteItemList from "./components/noteItem/NoteItemList";
 import Menu from "./components/menu/menu";
 import { useAppDispatch, useAppSelector } from "./hooks";
@@ -7,13 +7,27 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { fetchNotes } from "./store/slice/notesSlice";
 import "./App.css";
 import SingleNote from "./components/pages/singleNote";
+import Search from "./components/search/search";
+
+
 
 function App() {
   const [isNoteOpen, setNoteOpen] = useState<boolean>(false);
+  const [searchOpen, setSearchOpen] = useState<boolean>(false)
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.notesSlice.loading);
+  
   useEffect(() => {
     dispatch(fetchNotes());
+    const keyClick = (e:KeyboardEvent) =>{
+      if(e.key === 'Escape' || e.key === 'Enter'){
+        setSearchOpen(false)
+      }
+    }
+    document.addEventListener('keydown', keyClick)
+    return () =>{
+     document.removeEventListener('keydown', keyClick)
+    }
   }, []);
 
   useEffect(() => {
@@ -22,11 +36,12 @@ function App() {
 
   return (
     <div className="App">
-      <Menu openNote={setNoteOpen} />
+      <Menu searchOpen={searchOpen} setSearchOpen={setSearchOpen} openNote={setNoteOpen} />
       {isNoteOpen ? <Modal closeNote={setNoteOpen} /> : null}
+       {searchOpen ? <Search searchOpen={searchOpen}/> : null}
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<NoteItemList />} />
+          <Route path="/" element={<NoteItemList setSearchOpen={setSearchOpen}/>} />
           <Route path="/noteid:id" element={<SingleNote />} />
         </Routes>
       </BrowserRouter>

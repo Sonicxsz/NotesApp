@@ -11,12 +11,14 @@ export type Istate = {
 
 type NotesState = {
   notes: Istate[];
+  filter: string;
   loading: boolean;
   important: boolean;
 };
 
 const initialState: NotesState = {
   notes: [],
+  filter: '',
   loading: false,
   important: false,
 };
@@ -69,6 +71,9 @@ const NoteSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
+    changeFilter: (state, action) =>{
+      state.filter = action.payload
+    },
     addNote: (state, action) => {
       state.notes.push(action.payload);
     },
@@ -112,5 +117,5 @@ const NoteSlice = createSlice({
   },
 });
 
-export const { addNote, deleteNote, changeImportant } = NoteSlice.actions;
+export const { addNote, deleteNote, changeImportant, changeFilter } = NoteSlice.actions;
 export default NoteSlice.reducer;

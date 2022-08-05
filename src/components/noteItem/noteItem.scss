@@ -15,9 +15,11 @@
     padding: 5px 15px 5px 15px;
     color: rgb(222, 251, 251);
     margin-right: 20px;
+    margin-bottom: 20px;
     box-shadow: 7px 10px 12px rgba(42, 42, 42, 0.752);
     transform: scale(100%);
     transition: transform 0.3s ease;
+
     .circle {
       width: 20px;
       height: 20px;
@@ -43,7 +45,6 @@
       align-items: center;
       width: 30px;
       height: 25px;
-      padding-top: 5px;
     }
     .imp:hover {
       border-radius: 10%;

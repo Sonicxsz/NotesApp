@@ -1,7 +1,7 @@
 import React from "react";
 import NoteItem from "./noteItem";
 import "./noteItem.scss";
-
+import { filterNotes } from "../../utils/filter";
 import { useAppSelector } from "../../hooks";
 
 export interface Istate {
@@ -13,16 +13,14 @@ export interface Istate {
   id: string;
 }
 
-const NoteItemList: React.FC = () => {
-  const { notes, important } = useAppSelector((state) => state.notesSlice);
+interface NoteListProps {
+  setSearchOpen: (arg: boolean) => void;
+}
 
-  let filteredNotes = important
-    ? notes.filter((i) => {
-        if (i.important) {
-          return i;
-        }
-      })
-    : notes;
+const NoteItemList = (props: NoteListProps) => {
+  const { notes, important } = useAppSelector((state) => state.notesSlice);
+  const filter = useAppSelector((state) => state.notesSlice.filter);
+  let filteredNotes = filterNotes(notes, important, filter);
 
   return (
     <div className="wrap">
@@ -30,6 +28,7 @@ const NoteItemList: React.FC = () => {
         filteredNotes.map((i, ind) => {
           return (
             <NoteItem
+              setSearchOpen={props.setSearchOpen}
               color={i.color}
               important={i.important}
               key={ind}
@@ -42,7 +41,7 @@ const NoteItemList: React.FC = () => {
         })
       ) : (
         <div>
-          <h1>пока нету заметок</h1>
+        
         </div>
       )}
     </div>

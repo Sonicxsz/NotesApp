@@ -36,15 +36,15 @@ const Modal = (props: Imodal) => {
           value={mode}
           size="small"
           fullWidth
-          style={{ maxWidth: "100px", maxHeight: "25px", margin: "0 30%" }}
+          style={{ maxWidth: "100px", maxHeight: "25px", margin: "10px 30% 0" }}
         >
           <ToggleButton
             value="1"
-            color="warning"
+            color="success"
             onClick={() => {
               setMode("1");
             }}
-            size="small"
+            size="medium"
           >
             Note
           </ToggleButton>
@@ -52,8 +52,8 @@ const Modal = (props: Imodal) => {
             onClick={() => {
               setMode("2");
             }}
-            color="warning"
-            size="small"
+            color="success"
+            size="medium"
             value="2"
           >
             List

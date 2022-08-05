@@ -1,31 +1,62 @@
 .wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
   margin-right: 100px;
-  padding: 20px 10px 0 10px;
-  background-color: blue;
-
+  min-width: 70px;
+  max-width: 70px;
+  min-height: 100%;
+  z-index: 100;
+  top: 0;
+  background-color: #9f3d40;
+  box-shadow: 5px 1px 10px #1d1f21;
+  
   .item {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
+    width: 100%;
     height: 50px;
-    background-color: red;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     display: inline-block;
     margin-bottom: 60px;
     text-align: center;
     padding-top: 8px;
     padding-right: 1px;
-    border-radius: 40%;
+   
     i {
       font-size: 30px;
-      color: white;
+      color: #d9d9d9;
       transition: all 0.5s ease;
     }
-    :hover {
-      color: rgb(39, 241, 231);
-    }
   }
+}
+
+
+
+.sticky{
+  display: flex;
+  position: fixed;
+  width: 70px;
+  padding-top: 20px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: center;
+  top: 0;
+  left: 0;
+  
+}
+
+
+.item:hover {
+  border-radius: 10%;
+  background-color: #ae3846;
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+}
+.item:active {
+  border-radius: 10%;
+  background-color: #d7384a;
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
 }

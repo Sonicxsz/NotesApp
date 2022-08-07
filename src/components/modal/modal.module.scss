@@ -15,6 +15,7 @@
     background-color: red;
     margin-right: 10px;
     transition: all 0.5s ease;
+    border-radius: 50%;
   }
   .color:active {
     border: 2px solid rgb(80, 143, 245);
@@ -27,6 +28,7 @@
     margin-right: 10px;
     transition: all 0.5s ease;
     border: 2px solid rgb(142, 180, 241);
+    border-radius: 50%;
   }
 
   .nameInp {

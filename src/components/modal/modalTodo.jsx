@@ -1,26 +1,66 @@
-import React, { useState } from 'react';
-import ModalBtns from './modalBtns';
+import { useState } from "react";
+import ModalBtns from "./modalBtns";
+import style from "./modalTodo.css";
+import TodoItem from "./modalTodoItem";
 
 function ModalTodo() {
+  const [list, setList] = useState({
+    title: "",
+    content: "",
+  });
 
-    const [todos, setTodos] = useState({
-      name : "",
-      text : [{}]
+  const [notes, setNotes] = useState([]);
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setList((preValue) => {
+      return {
+        ...preValue,
+        [name]: value,
+      };
     });
+  }
 
-    const handleAdd = (e) => {
-      setTodos({
-        ...todos, name: e.target.value
-      })
-    };
+  function addNote(newNote) {
+    setNotes((preValue) => {
+      return [...preValue, newNote];
+    });
+  }
+
+  // function createNewInput()
+
+  function addBtn(e) {
+    e.preventDefault();
+    addNote(list);
+  }
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-    <input type="text" value={todos.name} onChange={(e) => handleAdd(e)} placeholder='введите название...'></input>
-    <input />
-    <ModalBtns />
-    </form>
-    )
+    <div>
+      <form>
+        <input
+          value={list.title}
+          type="text"
+          placeholder="Title"
+          name="title"
+          onChange={handleChange}
+        />
+        <p>
+          <textarea
+            value={list.content}
+            name="content"
+            placeholder="Введите текст..."
+            onChange={handleChange}
+          ></textarea>
+        </p>
+        <button onClick={(e) => addBtn(e)}>add</button>
+      </form>
+      {notes.map((item, index) => {
+        return (
+          <TodoItem key={index} title={item.title} content={item.content} />
+        );
+      })}
+    </div>
+  );
 }
 
 export default ModalTodo;

@@ -14,13 +14,12 @@ interface Imodal {
 }
 export const noteSelecColors = [
   { id: 0, name: "#2E958C" },
-    { id: 1, name: "#589d62" },
-    { id: 2, name: "#945D87" },
-    { id: 3, name: "#EF7663" },
-    {id:4, name: '#a8296b'},
-    {id:5, name: '#303d55'},
-    
-]
+  { id: 1, name: "#589d62" },
+  { id: 2, name: "#945D87" },
+  { id: 3, name: "#EF7663" },
+  { id: 4, name: "#a8296b" },
+  { id: 5, name: "#303d55" },
+];
 
 function ModalNote(props: Imodal) {
   const [name, setName] = useState<string>("");

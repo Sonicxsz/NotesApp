@@ -1,8 +1,9 @@
-import React from "react";
 import NoteItem from "./noteItem";
 import "./noteItem.scss";
 import { filterNotes } from "../../utils/filter";
 import { useAppSelector } from "../../hooks";
+
+
 
 export interface Istate {
   name: string;
@@ -10,21 +11,33 @@ export interface Istate {
   time: number | string;
   color: string;
   important: boolean;
-  id: string;
+  _id?: string;
 }
+
+
 
 interface NoteListProps {
   setSearchOpen: (arg: boolean) => void;
 }
 
+
+
 const NoteItemList = (props: NoteListProps) => {
-  const { notes, important } = useAppSelector((state) => state.notesSlice);
+  const { notes, important, loading } = useAppSelector((state) => state.notesSlice);
   const filter = useAppSelector((state) => state.notesSlice.filter);
   let filteredNotes = filterNotes(notes, important, filter);
 
+
+  
   return (
     <div className="wrap">
-      {filteredNotes.length > 0 ? (
+      {filteredNotes.length <= 0 ? (
+         <>
+         <h1 className="firstNoteText">
+         Добавьте вашу первую заметку
+         </h1>
+         </>
+      ) : (
         filteredNotes.map((i, ind) => {
           return (
             <NoteItem
@@ -34,18 +47,19 @@ const NoteItemList = (props: NoteListProps) => {
               key={ind}
               title={i.title}
               name={i.name}
-              id={i.id}
+              _id={i._id}
+              delete={false}
               time={i.time}
+              removeTime={''}
             />
+            
           );
         })
-      ) : (
-        <div>
-        
-        </div>
       )}
     </div>
   );
 };
 
 export default NoteItemList;
+
+

@@ -1,0 +1,36 @@
+.deleteWrapper{
+    width: 100%;
+    padding: 10px 0;
+    .deleteNotice{
+        display: block;
+        width: 80%;
+        height: 20px;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 500;
+        color: white;
+        font-style: italic;
+        margin-bottom: 20px;
+        span{
+            margin-right: 30px;
+        }
+        button{ 
+            background-color:unset;
+            color: rgb(255, 244, 43);
+            border: unset;
+            font-size: 18px;
+            font-weight: 500;
+            width: 180px;
+            border-radius:5px;
+            height: 30px;
+            transition: background-color .3s linear;
+        }
+        button:hover{
+            background-color: rgb(15, 145, 210);
+        }
+        button:active{
+            background-color: rgb(102, 198, 246);
+        }
+    }
+}
+

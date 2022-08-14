@@ -5,8 +5,11 @@ export type Istate = {
   title: string;
   time: number | string;
   important: boolean;
-  id: string;
+  _id: string;
   color: string;
+  remove: boolean;
+  removeTime:string;
+
 };
 
 type NotesState = {
@@ -14,6 +17,7 @@ type NotesState = {
   filter: string;
   loading: boolean;
   important: boolean;
+  
 };
 
 const initialState: NotesState = {
@@ -21,14 +25,16 @@ const initialState: NotesState = {
   filter: '',
   loading: false,
   important: false,
+  
+  
 };
 
-export const path = "https://62dc84e04438813a2616d538.mockapi.io/notes";
+export const path = "http://localhost:4000/note/";
 
 export const fetchNotes = createAsyncThunk<Istate[], undefined>(
   "notes/fetch",
   async () => {
-    let res = await fetch(path);
+    let res = await fetch(`${path}get`);
 
     if (!res.ok) {
       throw console.error("sss");
@@ -40,7 +46,7 @@ export const fetchNotes = createAsyncThunk<Istate[], undefined>(
 );
 
 export const addNotes = createAsyncThunk<any, any>("add/fetch", async (obj) => {
-  fetch(path, {
+  fetch(`${path}post`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: obj,
@@ -50,8 +56,18 @@ export const addNotes = createAsyncThunk<any, any>("add/fetch", async (obj) => {
 export const deleteNotes = createAsyncThunk<any, string>(
   "delete/fetch",
   async (id) => {
-    fetch(`${path}/${id}`, {
+    fetch(`${path}delete/${id}`, {
       method: "DELETE",
+    });
+  }
+);
+export const recentlyDelete = createAsyncThunk<any, any>(
+  "change/fetch",
+  async (obj) => {
+    fetch(`${path}path/${obj._id}`, {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: obj.b,
     });
   }
 );
@@ -59,8 +75,8 @@ export const deleteNotes = createAsyncThunk<any, string>(
 export const changeFavorite = createAsyncThunk<any, any>(
   "change/fetch",
   async (obj) => {
-    fetch(`${path}/${obj.id}`, {
-      method: "PUT",
+    fetch(`${path}path/${obj._id}`, {
+      method: "PATCH",
       headers: { "Content-type": "application/json" },
       body: obj.b,
     });
@@ -79,7 +95,7 @@ const NoteSlice = createSlice({
     },
     deleteNote: (state, action) => {
       const notes = state.notes.filter((i) => {
-        return i.id !== action.payload;
+        return i._id !== action.payload;
       });
       state.notes = notes;
     },
@@ -93,9 +109,8 @@ const NoteSlice = createSlice({
       console.log("sorry something wrong");
     });
     builder.addCase(fetchNotes.fulfilled, (state, action) => {
-      state.notes = action.payload;
+      state.notes = action.payload;    
     });
-    builder.addCase(fetchNotes.pending, () => {});
     builder.addCase(addNotes.pending, (state) => {
       state.loading = !state.loading;
     });

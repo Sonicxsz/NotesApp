@@ -4,7 +4,9 @@
     min-height: 100vh;
     height: 100%;
     overflow: scroll;
-    background-color: #153e36;
+    background-image: url('https://sun9-30.userapi.com/impg/xDdvMIXokuPt7f3FMoXRsdYPuMQhJZ9xusEN0g/EN61EFOJEJk.jpg?size=2560x1440&quality=96&sign=defbd1446d91f35c99da48317edd04c9&type=album');
+    background-repeat: repeat;
+    background-size: contain;
     position: relative;
 }
 /* #E38664; */

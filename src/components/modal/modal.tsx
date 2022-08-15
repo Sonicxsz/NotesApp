@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import style from "./modal.module.scss";
 import ModalNote from "./modalNote";
 import { motion } from "framer-motion";
+import ModalTodo from "./modalTodo";
 
 export const animationDiv = {
   hidden: {
@@ -59,7 +60,7 @@ const Modal = (props: Imodal) => {
             List
           </ToggleButton>
         </ToggleButtonGroup>
-        {mode === "1" ? <ModalNote closeNote={props.closeNote} /> : null}
+        {mode === "1" ? <ModalNote closeNote={props.closeNote} /> : <ModalTodo />}
       </motion.div>
     </div>
   );

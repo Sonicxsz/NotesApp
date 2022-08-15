@@ -2,8 +2,8 @@ import { Button } from "@mui/material";
 import style from "./modal.module.scss";
 
 interface btnProps {
-  addNewNote: () => void;
-  closeNote: (arg: boolean) => void;
+  addNewNote?: () => void;
+  closeNote?: (arg: boolean) => void;
 }
 
 function ModalBtns(props: btnProps) {
@@ -12,6 +12,7 @@ function ModalBtns(props: btnProps) {
       <div className={style.btns}>
         <Button
           onClick={() => {
+            if (props.closeNote)
             props.closeNote(false);
           }}
           variant="outlined"

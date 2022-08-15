@@ -18,7 +18,6 @@ export const noteSelecColors = [
     {id:4, name: '#a8296b'},
     {id:5, name: '#303d55'},  
 ]
-
 function ModalNote(props: Imodal) {
   const [name, setName] = useState<string>("");
   const [title, setTitle] = useState<string>("");

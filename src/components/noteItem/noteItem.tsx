@@ -25,7 +25,6 @@ export type INoteItem = {
 
 const NoteItem = (props: INoteItem) => {
   const { name, title, time, _id, important, removeTime} = props;
- 
   const deleteTime = new Date(+removeTime).toDateString().slice(3)
   const color = +important ? "warning" : "inherit";
   const dispatch = useAppDispatch();

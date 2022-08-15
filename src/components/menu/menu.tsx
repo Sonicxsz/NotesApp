@@ -33,6 +33,16 @@ function Menu(props: menuProps) {
   return (
     <div className={style.wrap}>
       <div className={style.sticky}>
+      <Link to='/profile'>
+        <div
+        className={style.item}
+        style={{marginBottom: "30px"}}
+        >
+          <div className={style.profileCircle}>
+
+          </div>
+        </div>
+      </Link>
       <Link to='/'>
         <div
           className={style.item}

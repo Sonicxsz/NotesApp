@@ -6,6 +6,7 @@ import DeletePage from "./components/pages/deletePage/deletePage";
 import Modal from "./components/modal/modal";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { fetchNotes } from "./store/slice/notesSlice";
+import ProfilePage from "./components/pages/profilePage/ProfilePage";
 import "./App.css";
 import SingleNote from "./components/pages/singleNote/singleNote";
 import Search from "./components/search/search";
@@ -48,6 +49,7 @@ function App() {
           <Route path="/" element={<NoteItemList setSearchOpen={setSearchOpen}/>} />
           <Route path="/noteid:id" element={<SingleNote />} />
           <Route path="/delete" element={<DeletePage/>}/>
+          <Route path="/profile" element ={<ProfilePage/>} />
         </Routes>
       </BrowserRouter>
     </div>

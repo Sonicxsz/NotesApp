@@ -27,8 +27,6 @@ function ModalTodo() {
     });
   }
 
-  // function createNewInput()
-
   function addBtn(e) {
     e.preventDefault();
     addNote(list);
@@ -40,7 +38,7 @@ function ModalTodo() {
         <input
           value={list.title}
           type="text"
-          placeholder="Title"
+          placeholder="You name..."
           name="title"
           onChange={handleChange}
         />
@@ -48,7 +46,7 @@ function ModalTodo() {
           <textarea
             value={list.content}
             name="content"
-            placeholder="Введите текст..."
+            placeholder="Todo..."
             onChange={handleChange}
           ></textarea>
         </p>

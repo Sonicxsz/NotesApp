@@ -1,10 +1,8 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { nanoid } from "nanoid";
-import { title } from "process";
+import {TextField, Typography } from "@mui/material";
 import style from "./modal.module.scss";
 import { useState } from "react";
 import { useAppDispatch } from "../../hooks";
-import { addNotes } from "../../store/slice/notesSlice";
+import { addNotes, changeFavorite } from "../../store/slice/notesSlice";
 import { timeCreater } from "../../utils/time";
 import { Istate } from "../noteItem/NoteItemList";
 import ModalBtns from "./modalBtns";
@@ -13,14 +11,13 @@ interface Imodal {
   closeNote: (value: boolean) => void;
 }
 export const noteSelecColors = [
-  { id: 0, name: "#2E958C" },
-  { id: 1, name: "#589d62" },
-  { id: 2, name: "#945D87" },
-  { id: 3, name: "#EF7663" },
-  { id: 4, name: "#a8296b" },
-  { id: 5, name: "#303d55" },
-];
-
+    { id: 0, name: "#2E958C" },
+    { id: 1, name: "#589d62" },
+    { id: 2, name: "#945D87" },
+    { id: 3, name: "#EF7663" },
+    {id:4, name: '#a8296b'},
+    {id:5, name: '#303d55'},  
+]
 function ModalNote(props: Imodal) {
   const [name, setName] = useState<string>("");
   const [title, setTitle] = useState<string>("");
@@ -29,13 +26,12 @@ function ModalNote(props: Imodal) {
 
   const dispatch = useAppDispatch();
   function addNewNote() {
-    let id = nanoid();
-    let date = timeCreater();
+    
+    let date = timeCreater(2);
     let newNote: Istate = {
       important: false,
       name: name,
       title,
-      id,
       time: date,
       color,
     };

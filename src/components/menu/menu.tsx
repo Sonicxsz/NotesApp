@@ -9,36 +9,64 @@ interface menuProps {
   searchOpen: boolean;
   openNote: (arg: boolean) => void;
   setSearchOpen: (arg: boolean) => void;
+  isNoteOpen: boolean;
 }
 
-function Menu(props: any) {
-  const filter = useAppSelector((state) => state.notesSlice.filter);
+function Menu(props: menuProps) {
+  const {filter} = useAppSelector((state) => state.notesSlice);
   const dispatch = useAppDispatch();
 
+  //переключатели активности
+  const [all, setAll] = React.useState(true)
+  const [star, setStar] = React.useState(false)
+  const [trash, setTrash] = React.useState(false)
+  //переключатели активности
+
+  //Цвет активности кнопок
   const colorActive = filter.length ? { color: "orange" } : { color: "" };
+  const importantActive = star ? { color: "orange" } : { color: "" };
+  const allActive =  all ? { color: "orange" } : { color: "" };
+  const trashActive =  trash ? { color: "orange" } : { color: "" };
+  const modalActive = props.isNoteOpen ? { color: "orange" } : { color: "" };
+  //Цвет активности кнопок
 
   return (
     <div className={style.wrap}>
       <div className={style.sticky}>
+      <Link to='/profile'>
+        <div
+        className={style.item}
+        style={{marginBottom: "30px"}}
+        >
+          <div className={style.profileCircle}>
+
+          </div>
+        </div>
+      </Link>
+      <Link to='/'>
         <div
           className={style.item}
           onClick={() => {
+            setAll(true)
+            setStar(false)
+            setTrash(false)
             dispatch(changeFilter(""));
             props.setSearchOpen(false);
             dispatch(changeImportant(false));
           }}
         >
-          <Link to='/'>
-          <i className="bi bi-journal-bookmark"></i>
-          </Link>
+          <i className="bi bi-journal-bookmark" style={allActive} ></i>
         </div>
-        <div className={style.item}>
-          <i
-            className="bi bi-star"
-            onClick={() => {
-              dispatch(changeImportant(true));
-            }}
-          ></i>
+        </Link>
+        <div 
+        onClick={() => {
+          dispatch(changeImportant(true));
+          setAll(false)
+          setStar(true)
+          setTrash(false)
+        }}
+        className={style.item}>
+          <i className="bi bi-star" style={importantActive}></i>
         </div>
         <div
           onClick={() => {
@@ -50,9 +78,18 @@ function Menu(props: any) {
           <i className="bi bi-search" style={colorActive}></i>
         </div>
 
-        <div className={style.item}>
-          <i className="bi bi-trash-fill"></i>
-        </div>
+        <Link to='/delete'
+        onClick={() =>{
+          setAll(false)
+          setStar(false)
+          setTrash(true)
+        }}
+        >
+            <div 
+            className={style.item}>
+              <i className="bi bi-trash-fill" style={trashActive}></i>
+            </div>
+        </Link>
         <div
           className={style.item}
           onClick={() => {
@@ -60,7 +97,7 @@ function Menu(props: any) {
             props.setSearchOpen(false);
           }}
         >
-          <i className="bi bi-plus-circle-dotted"></i>
+          <i className="bi bi-plus-circle-dotted" style={modalActive}></i>
         </div>
       </div>
     </div>
@@ -68,6 +105,4 @@ function Menu(props: any) {
 }
 
 export default Menu;
-function setSearchOpen(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
+

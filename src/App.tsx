@@ -1,12 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import NoteItemList from "./components/noteItem/NoteItemList";
 import Menu from "./components/menu/menu";
 import { useAppDispatch, useAppSelector } from "./hooks";
+import DeletePage from "./components/pages/deletePage/deletePage";
 import Modal from "./components/modal/modal";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { fetchNotes } from "./store/slice/notesSlice";
+import ProfilePage from "./components/pages/profilePage/ProfilePage";
 import "./App.css";
-import SingleNote from "./components/pages/singleNote";
+import SingleNote from "./components/pages/singleNote/singleNote";
 import Search from "./components/search/search";
 
 
@@ -38,14 +40,16 @@ function App() {
     <div className="App">
       
       <BrowserRouter>
-      <Menu searchOpen={searchOpen} setSearchOpen={setSearchOpen} openNote={setNoteOpen} />
-      {isNoteOpen ? <Modal closeNote={setNoteOpen} /> : null}
+      <Menu isNoteOpen={isNoteOpen} searchOpen={searchOpen} setSearchOpen={setSearchOpen} openNote={setNoteOpen} />
+        {isNoteOpen ? <Modal closeNote={setNoteOpen} /> : null}
         {searchOpen ? <Search searchOpen={searchOpen}/> : null}
         <Routes>
         
        
           <Route path="/" element={<NoteItemList setSearchOpen={setSearchOpen}/>} />
           <Route path="/noteid:id" element={<SingleNote />} />
+          <Route path="/delete" element={<DeletePage/>}/>
+          <Route path="/profile" element ={<ProfilePage/>} />
         </Routes>
       </BrowserRouter>
     </div>

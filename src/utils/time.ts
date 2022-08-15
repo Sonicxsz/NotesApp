@@ -1,13 +1,15 @@
-export const timeCreater = () => {
+export const timeCreater = (arg?:number) => {
   let hours = zeroHelper(new Date().getHours());
   let minutes = zeroHelper(new Date().getMinutes());
-  let day = zeroHelper(new Date().getDate());
+  let day = zeroHelper(new Date().getDate(), arg);
   let month = getMonthName(new Date().getMonth());
 
   return `${day} ${month} - ${hours}:${minutes} `;
 };
 
-function zeroHelper(num: number): string {
+function zeroHelper(num: number, arg?:number): string {
+  if(arg)
+  num = num + arg
   if (num < 10) {
     return `0${num}`;
   } else {

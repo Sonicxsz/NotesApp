@@ -7,7 +7,7 @@ export type Istate = {
   important: boolean;
   _id: string;
   color: string;
-  remove: boolean;
+  removeNote: boolean;
   removeTime:string;
 
 };

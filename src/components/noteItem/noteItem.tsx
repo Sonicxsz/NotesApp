@@ -53,7 +53,7 @@ const NoteItem = (props: INoteItem) => {
               fontSize="medium"
               onClick={ async () => {
                 let removeTime = timeReamning()
-                const b = await JSON.stringify({remove:true, removeTime})
+                const b = await JSON.stringify({removeNote:true, removeTime})
                 dispatch(recentlyDelete({_id, b}));
               }}
             ></ClearIcon>

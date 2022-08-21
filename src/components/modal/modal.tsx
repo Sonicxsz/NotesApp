@@ -1,7 +1,7 @@
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import React, { useState } from "react";
 import style from "./modal.module.scss";
-import ModalNote from "./modalNote";
+import ModalNote from "./note/modalNote";
 import { motion } from "framer-motion";
 import ModalTodo from "./modalTodo";
 
@@ -60,7 +60,7 @@ const Modal = (props: Imodal) => {
             List
           </ToggleButton>
         </ToggleButtonGroup>
-        {mode === "1" ? <ModalNote closeNote={props.closeNote} /> : <ModalTodo />}
+        {mode === "1" ? <ModalNote closeNote={props.closeNote} /> : <ModalTodo closeNote={props.closeNote}/>}
       </motion.div>
     </div>
   );

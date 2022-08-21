@@ -58,6 +58,7 @@ function Menu(props: menuProps) {
           <i className="bi bi-journal-bookmark" style={allActive} ></i>
         </div>
         </Link>
+        <Link to='/'>
         <div 
         onClick={() => {
           dispatch(changeImportant(true));
@@ -77,7 +78,7 @@ function Menu(props: menuProps) {
         >
           <i className="bi bi-search" style={colorActive}></i>
         </div>
-
+        </Link>
         <Link to='/delete'
         onClick={() =>{
           setAll(false)

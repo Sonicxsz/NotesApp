@@ -2,12 +2,12 @@ import { Istate } from "../store/slice/notesSlice";
 
 function filterNotes (arr:Istate[], important:boolean, filter:string):Istate[]{
     let items = important ? arr.filter((i:Istate) => {
-          if (i.important && !i.remove) {
+          if (i.important && !i.removeNote) {
             return i;
           }
         })
       : arr.filter(i =>{
-        if(!i.remove){
+        if(!i.removeNote){
           return i
         }
       });

@@ -84,3 +84,30 @@
   background-color: rgba(21, 25, 21, 0.468);
   z-index: 998;
 }
+
+
+.todos {
+  width: 100%;
+  margin: 0px auto;
+  min-height: 5px;
+  max-height: 180px;
+  overflow: scroll;
+  padding-left: 10px;
+
+}
+
+.todo {
+  display: flex;
+  margin-top: 8px;
+  word-wrap: break-word;
+  justify-content: center;
+  align-items:center;
+  border-bottom: 1px solid black;
+  padding: 5px 0;
+  
+}
+
+.todoText {
+  width: 90%;
+  padding-right: 5px;
+}

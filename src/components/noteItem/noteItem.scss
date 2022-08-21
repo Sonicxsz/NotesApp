@@ -89,7 +89,8 @@
       }
     }
     .name {
-      height: 18px;
+      min-height: 18px;
+      max-height: 30px;
       font-size: 22px;
       font-weight: 500;
       display: block;

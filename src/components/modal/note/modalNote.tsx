@@ -1,33 +1,27 @@
-import {TextField, Typography } from "@mui/material";
-import style from "./modal.module.scss";
+import {TextField } from "@mui/material";
+import style from "../modal.module.scss";
 import { useState } from "react";
-import { useAppDispatch } from "../../hooks";
-import { addNotes, changeFavorite } from "../../store/slice/notesSlice";
-import { timeCreater } from "../../utils/time";
-import { Istate } from "../noteItem/NoteItemList";
-import ModalBtns from "./modalBtns";
+import { useAppDispatch } from "../../../hooks";
+import { addNotes } from "../../../store/slice/notesSlice";
+import { timeCreater } from "../../../utils/time";
+import { Istate } from "../../noteItem/NoteItemList";
+import ModalBtns from "../modalBtns";
+import ColorPick from "../../colorPick/ColorPick";
 
 interface Imodal {
   closeNote: (value: boolean) => void;
 }
-export const noteSelecColors = [
-    { id: 0, name: "#2E958C" },
-    { id: 1, name: "#589d62" },
-    { id: 2, name: "#945D87" },
-    { id: 3, name: "#EF7663" },
-    {id:4, name: '#a8296b'},
-    {id:5, name: '#303d55'},  
-]
+
 function ModalNote(props: Imodal) {
   const [name, setName] = useState<string>("");
   const [title, setTitle] = useState<string>("");
-  const [colorBtns, setColorBtns] = useState(noteSelecColors);
+  
   const [color, setColor] = useState<string>("#2E958C");
 
   const dispatch = useAppDispatch();
   function addNewNote() {
-    
-    let date = timeCreater(2);
+    if(name.length > 0 && title.length > 0){
+      let date = timeCreater(2);
     let newNote: Istate = {
       important: false,
       name: name,
@@ -38,6 +32,8 @@ function ModalNote(props: Imodal) {
     const json = JSON.stringify(newNote);
     dispatch(addNotes(json));
     props.closeNote(false);
+    }
+    
   }
 
   return (
@@ -48,6 +44,8 @@ function ModalNote(props: Imodal) {
           onChange={(e) => {
             setName(e.target.value);
           }}
+          inputProps={{ maxLength: 23 }}
+          helperText={name.length === 23 ? 'Максимум 23 символов' : ' '}
           className={style.nameInp}
           id="standard-basic"
           label="Введите название заметки"
@@ -71,26 +69,8 @@ function ModalNote(props: Imodal) {
           variant="standard"
         />
       </div>
-
-      <div className={style.colors}>
-        <Typography mr={1} variant="body1">
-          Цвет:
-        </Typography>
-        {colorBtns.map((i) => {
-          let clazz =
-            i.name === color ? `${style.colorPick}` : `${style.color}`;
-          return (
-            <div
-              onClick={() => {
-                setColor(i.name);
-              }}
-              key={i.id}
-              className={clazz}
-              style={{ backgroundColor: i.name }}
-            ></div>
-          );
-        })}
-      </div>
+       
+       <ColorPick setColor={setColor} color={color} />
 
       <ModalBtns addNewNote={addNewNote} closeNote={props.closeNote} />
     </>

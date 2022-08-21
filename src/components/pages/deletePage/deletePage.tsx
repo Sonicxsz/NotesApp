@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 function DeletePage() {
  const notes = useAppSelector((state) => state.notesSlice.notes)
  const dispatch = useAppDispatch()
- const deletedNotes = notes.filter((i) => i.remove && i)
+ const deletedNotes = notes.filter((i) => i.removeNote && i)
 useEffect(() =>{
   deletedNotes.map((i) =>{
     let iTime = i.removeTime

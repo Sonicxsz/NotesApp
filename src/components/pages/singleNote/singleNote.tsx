@@ -11,7 +11,7 @@ import SaveAsIcon from "@mui/icons-material/SaveAs";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import styles from "./singleNote.module.scss";
 import { useAppDispatch } from "../../../hooks";
-import {noteSelecColors} from '../../modal/modalNote'
+import {noteSelecColors} from '../../../components/colorPick/ColorPick'
 
 function textController (e:React.MouseEvent<HTMLDivElement, MouseEvent>, setter:any, set:boolean, ref: React.RefObject<HTMLInputElement> | React.RefObject<HTMLTextAreaElement>, secSetter:any, secSet:boolean) {
     e.stopPropagation()

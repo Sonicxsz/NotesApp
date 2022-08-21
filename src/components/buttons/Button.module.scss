@@ -1,0 +1,22 @@
+.imp {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+  }
+  .imp:hover {
+    border-radius: 10%;
+    background-color: #1d87c0;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+  }
+  .imp:active {
+    border-radius: 10%;
+    background-color: #eec9be;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+  }

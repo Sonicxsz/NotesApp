@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import style from "./modal.module.scss";
 
 interface btnProps {
-  addNewNote?: () => void;
+  addNew?: () => void;
   closeNote?: (arg: boolean) => void;
 }
 
@@ -20,7 +20,7 @@ function ModalBtns(props: btnProps) {
         >
           Отменить
         </Button>
-        <Button onClick={props.addNewNote} variant="contained" color="success">
+        <Button onClick={props.addNew} variant="contained" color="success">
           Добавить
         </Button>
       </div>

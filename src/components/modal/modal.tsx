@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import style from "./modal.module.scss";
 import ModalNote from "./note/modalNote";
 import { motion } from "framer-motion";
-import ModalTodo from "./modalTodo";
+import ModalTodo from "./todo/modalTodo";
 
 export const animationDiv = {
   hidden: {

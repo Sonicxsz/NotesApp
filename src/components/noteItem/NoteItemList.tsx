@@ -2,7 +2,7 @@ import NoteItem from "./noteItem";
 import "./noteItem.scss";
 import { filterNotes } from "../../utils/filter";
 import { useAppSelector } from "../../hooks";
-
+import TodoItem from "../todo/TodoItem";
 
 
 export interface Istate {
@@ -26,11 +26,17 @@ const NoteItemList = (props: NoteListProps) => {
   const { notes, important, loading } = useAppSelector((state) => state.notesSlice);
   const filter = useAppSelector((state) => state.notesSlice.filter);
   let filteredNotes = filterNotes(notes, important, filter);
-
+  let todos = useAppSelector(state => state.todoSlice.todos)
 
   
   return (
     <div className="wrap">
+      {todos.map(i =>{
+        return (
+          <TodoItem key={i._id} name={i.name} time={i.time} color={i.color} _id={i._id} important={i.important} todosAr={i.todosAr}/>
+        )
+      })}
+      
       {filteredNotes.length <= 0 ? (
          <>
          <h1 className="firstNoteText">

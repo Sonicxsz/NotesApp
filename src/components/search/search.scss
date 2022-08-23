@@ -20,6 +20,18 @@
         border-bottom-style: hidden;
         color:rgba(0, 0, 0, 0.622);
     }
+
+    .deletIcon {
+        position: absolute;
+        right: 48px;
+        top: 92px;
+        color: rgba(0, 0, 0, 0.622);
+        cursor: pointer;
+    
+    &:hover{
+           color: black;
+        }
+    }
 }
 
 

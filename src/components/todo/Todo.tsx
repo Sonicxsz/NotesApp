@@ -8,6 +8,7 @@ interface TodoProps{
     text: string,
     completed?: boolean
     _id: string,
+    
 }
 
 
@@ -17,9 +18,8 @@ interface TodoProps{
 
 function Todo({text, completed, _id}: TodoProps) {
     const dispatch = useAppDispatch();
-
     const completedTodo = async() => {
-        const b = await JSON.stringify({ completed: !completed });
+        const b = await JSON.stringify({text, completed: !completed });
         dispatch(completeTodo({_id, b}))
     }
 

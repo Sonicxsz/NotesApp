@@ -89,7 +89,7 @@ function TodoItem({name, time, color, important, todosAr, _id}:TodoItemProps) {
 
         <div className={styles.text}>
           {todosAr.map(i =>{
-            return <Todo key={i._id} _id={_id!} text={i.title} completed={i.completed}  />
+            return <Todo key={i._id}  _id={_id!} text={i.title} completed={i.completed}  />
           })}
         </div>
         <div className={styles.line}>

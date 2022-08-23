@@ -2,6 +2,7 @@ import "./search.scss";
 import { motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { changeFilter } from "../../store/slice/notesSlice";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { TextField } from "@mui/material";
 import { animationDiv } from "../modal/modal";
 import { useEffect, useRef } from "react";
@@ -37,6 +38,7 @@ function Search(props: any) {
               value={filter}
             />
           </div>
+          {filter && <div onClick={() => dispatch(changeFilter(''))}><HighlightOffIcon className='deletIcon'/></div>}
         </div>
       </motion.div>
     </div>

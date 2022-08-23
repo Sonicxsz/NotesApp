@@ -30,6 +30,14 @@ function Menu(props: menuProps) {
   const modalActive = props.isNoteOpen ? { color: "orange" } : { color: "" };
   //Цвет активности кнопок
 
+
+  //Функция для переключения активности кнопок
+  function switcher (all: boolean, star: boolean, trash: boolean):void{
+    setAll(all);
+    setStar(star);
+    setTrash(trash);
+  }
+
   return (
     <div className={style.wrap}>
       <div className={style.sticky}>
@@ -47,9 +55,7 @@ function Menu(props: menuProps) {
         <div
           className={style.item}
           onClick={() => {
-            setAll(true)
-            setStar(false)
-            setTrash(false)
+            switcher(true, false, false)
             dispatch(changeFilter(""));
             props.setSearchOpen(false);
             dispatch(changeImportant(false));
@@ -62,9 +68,7 @@ function Menu(props: menuProps) {
         <div 
         onClick={() => {
           dispatch(changeImportant(true));
-          setAll(false)
-          setStar(true)
-          setTrash(false)
+          switcher(false, true, false)
         }}
         className={style.item}>
           <i className="bi bi-star" style={importantActive}></i>
@@ -81,9 +85,7 @@ function Menu(props: menuProps) {
         </Link>
         <Link to='/delete'
         onClick={() =>{
-          setAll(false)
-          setStar(false)
-          setTrash(true)
+          switcher(false, false, true)
         }}
         >
             <div 

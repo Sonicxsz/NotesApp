@@ -12,13 +12,15 @@ interface Imodal {
   closeNote: (value: boolean) => void;
 }
 
-function ModalNote(props: Imodal) {
+function ModalNote({closeNote}: Imodal) {
   const [name, setName] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   
   const [color, setColor] = useState<string>("#2E958C");
 
   const dispatch = useAppDispatch();
+
+  
   function addNewNote() {
     if(name.length > 0 && title.length > 0){
       let date = timeCreater(2);
@@ -31,7 +33,7 @@ function ModalNote(props: Imodal) {
     };
     const json = JSON.stringify(newNote);
     dispatch(addNotes(json));
-    props.closeNote(false);
+    closeNote(false);
     }
     
   }
@@ -72,7 +74,7 @@ function ModalNote(props: Imodal) {
        
        <ColorPick setColor={setColor} color={color} />
 
-      <ModalBtns addNewNote={addNewNote} closeNote={props.closeNote} />
+      <ModalBtns addNew={addNewNote} closeNote={closeNote} />
     </>
   );
 }

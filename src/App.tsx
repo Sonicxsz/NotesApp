@@ -10,6 +10,7 @@ import ProfilePage from "./components/pages/profilePage/ProfilePage";
 import "./App.css";
 import SingleNote from "./components/pages/singleNote/singleNote";
 import Search from "./components/search/search";
+import { fetchTodos } from "./store/slice/todoSlice";
 
 
 
@@ -34,6 +35,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchNotes());
+    dispatch(fetchTodos())
   }, [loading]);
 
   return (

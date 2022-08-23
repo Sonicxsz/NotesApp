@@ -42,7 +42,7 @@ const NoteItem = (props: INoteItem) => {
           {!props.delete ? <>
             <BookmarkOutlinedIcon
             color={color}
-            fontSize="large"
+            fontSize="medium"
             onClick={async () => {
               const b = await JSON.stringify({ important: !important });
               dispatch(changeFavorite({ b, _id }));

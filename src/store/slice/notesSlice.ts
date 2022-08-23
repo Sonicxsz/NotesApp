@@ -90,15 +90,6 @@ const NoteSlice = createSlice({
     changeFilter: (state, action) =>{
       state.filter = action.payload
     },
-    addNote: (state, action) => {
-      state.notes.push(action.payload);
-    },
-    deleteNote: (state, action) => {
-      const notes = state.notes.filter((i) => {
-        return i._id !== action.payload;
-      });
-      state.notes = notes;
-    },
     changeImportant: (state, action) => {
       state.important = action.payload;
     },
@@ -123,14 +114,12 @@ const NoteSlice = createSlice({
     builder.addCase(deleteNotes.fulfilled, (state) => {
       state.loading = !state.loading;
     });
-    builder.addCase(changeFavorite.pending, (state) => {
-      state.loading = !state.loading;
-    });
+    
     builder.addCase(changeFavorite.fulfilled, (state) => {
       state.loading = !state.loading;
     });
   },
 });
 
-export const { addNote, deleteNote, changeImportant, changeFilter } = NoteSlice.actions;
+export const {changeImportant, changeFilter } = NoteSlice.actions;
 export default NoteSlice.reducer;

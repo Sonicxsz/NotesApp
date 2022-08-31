@@ -20,7 +20,7 @@ const Login = () => {
         password: yup.string().typeError('Должно быть строкой').required('Обязательно'),
       })
       
-      //console.log(token === "undefined")
+      //console.log(token === "undefined" commit/)
 
       React.useEffect(()=> {
         if(status == 200 && token != "undefined" && bool){

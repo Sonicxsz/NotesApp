@@ -18,6 +18,7 @@
     "bootstrap-icons": "^1.9.1",
     "css-loader": "^6.7.1",
     "css-modules-typescript-loader": "^4.0.1",
+    "formik": "^2.2.9",
     "framer-motion": "^6.5.1",
     "json-server": "^0.17.0",
     "nanoid": "^4.0.0",
@@ -30,7 +31,9 @@
     "sass": "^1.53.0",
     "scss": "^0.2.4",
     "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yap": "^0.0.2",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

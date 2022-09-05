@@ -33,7 +33,9 @@
     "sass": "^1.53.0",
     "scss": "^0.2.4",
     "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yap": "^0.0.2",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

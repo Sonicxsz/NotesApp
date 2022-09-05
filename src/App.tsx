@@ -4,7 +4,7 @@ import Menu from "./components/menu/menu";
 import { useAppDispatch, useAppSelector } from "./hooks";
 import DeletePage from "./components/pages/deletePage/deletePage";
 import Modal from "./components/modal/modal";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import { fetchNotes } from "./store/slice/notesSlice";
 import ProfilePage from "./components/pages/profilePage/ProfilePage";
 import "./App.css";

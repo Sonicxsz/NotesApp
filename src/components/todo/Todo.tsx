@@ -22,7 +22,7 @@ function Todo({text, completed, _id}: TodoProps) {
         const b = await JSON.stringify({text, completed: !completed });
         dispatch(completeTodo({_id, b}))
     }
-
+   
   return (
     <div className={styles.todoWrapper}>
         <div 
